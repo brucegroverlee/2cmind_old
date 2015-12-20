@@ -21,7 +21,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "copy-html": "cp src/frontend/index.html public/index.html",
-    "build-css": "cp src/frontend/index.css public/bundle.css",
+    "build-css": "node-sass src/frontend/index.scss public/bundle.css",
     "build-js": "browserify -t [ babelify --presets [ es2015 ] ] src/frontend/index.js > public/bundle.js",
     "build-frontend": "npm run copy-html && npm run build-css && npm run build-js",
     "engine": "babel-node src/backend/index.js --presets es2015",
@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "babelify": "^7.2.0",
-    "browserify": "^12.0.1"
+    "browserify": "^12.0.1",
+    "node-sass": "^3.4.2"
   }
 }
