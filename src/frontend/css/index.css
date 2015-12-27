@@ -1,0 +1,32 @@
+
+body {
+    font-family: Raleway !important;
+    margin: 0% !important;
+    color: #333333 !important;
+}
+
+/* unvisited link 
+a:link {
+    color: #E8418F;
+    text-decoration: none;
+}
+
+/* visited link 
+a:visited {
+    color: #E8418F;
+    text-decoration: none;
+}
+
+/* mouse over link 
+a:hover {
+    color: #e89cbc;
+    text-decoration: none;
+}
+
+/* selected link 
+a:active {
+    color: #e8a866;
+    text-decoration: none;
+}
+
+*/

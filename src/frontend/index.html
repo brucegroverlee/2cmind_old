@@ -1,25 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="ccmind">
 <head>
 	<title>2cmind</title>
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="bundle.css">
-	<script type="text/javascript" src="bundle.js"></script>
+	<!-- Dev-Frontend -->
+	<!-- this part must be removed in production step-->
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./css/flexbox.css">
+	<link rel="stylesheet" type="text/css" href="./css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+	<script type="text/javascript" src="./js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/angular.min.js"></script>
+	<script type="text/javascript" src="./js/angular-route.min.js"></script>
+	<script type="text/javascript" src="./js/module.js"></script>
+	<script type="text/javascript" src="./js/controller.js"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+	<!-- /Dev-Frontend -->
 </head>
 <body>
-	<header>
-		<img src="">
-		<nav>
-			<ul>
-				<li>home</li>
-				<li>about</li>
-				<li>devices</li>
-				<li>collaborate</li>
-				<li>join</li>
-			</ul>
+	<header class=".app-header">
+		<nav class="navbar navbar-default" ng-controller="navBarController">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="#"><img src=""> 2cmind</a>
+		    </div>
+
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="active"><a href="#">home</a></li>
+		        <li><a href="#">about</a></li>
+		        <li><a href="#">devices</a></li>
+		        <li><a href="#">collaborate</a></li>
+		        <li><a href="#">join</a></li>
+		        <li><a href="#">{{'scrollTop: ' + scrollTop}}</a></li>
+		      </ul>
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="#">login</a></li>
+		      </ul>
+		    </div>
+		  </div>
 		</nav>
 	</header>
-	<section></section>
+	<section ng-controller="loginController">
+		<div class="">{{number}}</div>
+		<div class="">{{}}</div>
+		<div class="">{{scrollTop}}</div>
+	</section>
 	<footer></footer>
+	<script type="text/javascript" src="bundle.js"></script>
 </body>
 </html>
