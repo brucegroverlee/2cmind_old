@@ -17,7 +17,8 @@
         })
         .then(
           function (response) {
-          	deferred.resolved(response);
+          	//deferred.resolve({ error: response.data.error });
+          	deferred.resolve( response.data );
           }, 
           function (response) {
           	deferred.reject({error: 'error 500'});
@@ -47,10 +48,11 @@
         })
         .then(
           function (response) {
-          	deferred.resolved(response);
+          	//deferred.resolve({ error: response.data.error });
+          	deferred.resolve( response.data );
           }, 
           function (response) {
-          	deferred.reject({error: 'error 500'});
+          	deferred.reject({ error: 'error 500' });
           }
         )
         return deferred.promise;
