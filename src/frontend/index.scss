@@ -2,9 +2,7 @@
 src/frontend/index.scss
 */
 
-body {
-  font: 100% Helvetica, sans-serif;
-  background-color: #efefef;
-}
-
-
+@import './scss/bootstrap.scss';
+@import './scss/flexbox.scss';
+@import './scss/fonts.scss';
+@import './scss/index.scss';
