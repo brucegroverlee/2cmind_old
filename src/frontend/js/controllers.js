@@ -10,13 +10,11 @@
 			$scope.topDevices = 0;
 			$scope.topCollaborate = 0;
 			$scope.topLogin = 0;
-			/*$window.onscroll = function () {
-				$scope.scrollTop = $window.pageYOffset;
-			};*/
+
 			angular.element($window).bind("scroll", function() {
-	            $scope.scrollTop = $window.pageYOffset;
-	            $scope.$apply();
-	        });
+          $scope.scrollTop = $window.pageYOffset;
+          $scope.$apply();
+      });
 
 			$(window).resize(getSlidePosition);
 
@@ -28,10 +26,9 @@
 				$scope.topDevices = $('#slide-devices').position().top - 50;
 				$scope.topCollaborate = $('#slide-collaborate').position().top - 50;
 				$scope.topLogin = $('#slide-login').position().top - 50;
-	            //$scope.scrollTop = $scope.topAbout;
-	            $scope.$apply();
+        $scope.$apply();
 
-	            $('#nav-home').click(function () {
+        $('#nav-home').click(function () {
 					$('body,html').animate({
 						scrollTop: 0
 					}, time);
@@ -73,18 +70,10 @@
 					return false;
 				});
 			}
-
-				
-
-	        //angular.element($window).bind('onresize' function () {
-	            //$scope.scrollTop = 'se esta escalando 2';
-	            //$scope.$apply();
-	        	//alert('se esta escalando 2');
-	        //});
 			
 		}])
 
-		.controller('joinController', ['$scope', function ($scope) {
+		.controller('joinController', ['$scope', 'ccmindJoinService', function ($scope, ccmindJoinService) {
 			//$scope.attribute;
 			$scope.name = null;
 			$scope.email = null;
@@ -99,22 +88,38 @@
 					$scope.equalpassword = 'has-success';
 				}
 			};
+			
+			$scope.join = function () {
+				if ($scope.equalpassword === 'has-success') {
+					var promise = ccmindJoinService.join($scope.name, $scope.email, $scope.password);
+					promise.then(
+						function (response) {
+							alert( response.error );
+						},
+						function (response) {
+							alert( response.error );
+						}
+					);
+				}
+			}
+
 		}])
 		
-		.controller('loginController', ['$scope', function ($scope) {
-			//$scope.attribute;
-			/*$scope.name = null;
+		.controller('loginController', ['$scope', 'ccmindLoginService', function ($scope, ccmindLoginService) {
 			$scope.email = null;
 			$scope.password = null;
-			$scope.repassword = null;
-			$scope.equalpassword = null;
 
-			$scope.equalPassword = function (){
-				if ($scope.password !== $scope.repassword) {
-					$scope.equalpassword = 'has-error';
-				} else {
-					$scope.equalpassword = 'has-success';
-				}
-			};*/
+			$scope.login = function () {
+				var promise = ccmindLoginService.login($scope.email, $scope.password);
+				promise.then(
+					function (response) {
+						alert( response.error );
+					},
+					function (response) {
+						alert( response.error );
+					}
+				);
+			}
+
 		}]);
 })();
