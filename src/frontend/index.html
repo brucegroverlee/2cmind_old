@@ -3,19 +3,23 @@
 <head>
 	<title>2cmind</title>
 	<meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css" href="bundle.css">
+	<link rel="icon" type="image/png" href="./img/isotype.png" />
+    <meta name="description" content="The Internet is alive! YOUR ASSISTANT IN THE CLOUD">
+    <meta name="keywords" content="2cmind,daemon,assistant,artificial,intelligence,tasks,ia,bot,siri">
+	<link rel="stylesheet" type="text/css" href="./css/bundle.css">
+	<script type="text/javascript" src="./js/jquery-2.1.4.min.js"></script>
 	<!-- Dev-Frontend -->
 	<!-- this part must be removed in production step-->
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./css/flexbox.css">
 	<link rel="stylesheet" type="text/css" href="./css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="./css/index.css">
-	<script type="text/javascript" src="./js/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="./js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="./js/angular.min.js"></script>
 	<script type="text/javascript" src="./js/angular-route.min.js"></script>
 	<script type="text/javascript" src="./js/module.js"></script>
 	<script type="text/javascript" src="./js/controller.js"></script>
+	<script type="text/javascript" src="./js/directives.js"></script>
 	<script type="text/javascript" src="./js/index.js"></script>
 	<!-- /Dev-Frontend -->
 </head>
@@ -30,31 +34,102 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="#"><img src=""> 2cmind</a>
+		      <a class="navbar-brand" class="pointer"><img src="" class="pointer"> 2cmind</a>
 		    </div>
 
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		        <li class="active"><a href="#">home</a></li>
-		        <li><a href="#">about</a></li>
-		        <li><a href="#">devices</a></li>
-		        <li><a href="#">collaborate</a></li>
-		        <li><a href="#">join</a></li>
-		        <li><a href="#">{{'scrollTop: ' + scrollTop}}</a></li>
+		        <li id="nav-home" class="pointer" ng-class="{ active:(topAbout > scrollTop && scrollTop >= 0 ) }"><a>home</a></li>
+		        <li id="nav-about" class="pointer" ng-class="{ active:(topDevices > scrollTop && scrollTop >= topAbout ) }"><a>about</a></li>
+		        <li id="nav-devices" class="pointer" ng-class="{ active:(topCollaborate > scrollTop && scrollTop >= topDevices ) }"><a>devices</a></li>
+		        <li id="nav-collaborate" class="pointer" ng-class="{ active:(topLogin > scrollTop && scrollTop >= topCollaborate ) }"><a>collaborate</a></li>
+		        <li id="nav-join" class="pointer" ng-class="{ active:( scrollTop >= topLogin ) }"><a>join</a></li>
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right">
-		        <li><a href="#">login</a></li>
+		        <li id="nav-login" class="pointer" ng-class="{ active:( scrollTop >= topLogin ) }"><a>login</a></li>
 		      </ul>
 		    </div>
 		  </div>
 		</nav>
 	</header>
-	<section ng-controller="loginController">
-		<div class="">{{number}}</div>
-		<div class="">{{}}</div>
-		<div class="">{{scrollTop}}</div>
+	<section>
+		<!--slide-home-->
+		<div id="slide-home" class="slide">
+			<div class="title">The Internet is Alive</div>
+		</div>
+		<!--/slide-home-->
+
+		<!--slide-->
+		<div id="slide-about" class="slide">
+			<div class="text">
+                <div class="title">YOUR ASSISTANT IN THE CLOUD.</div>
+                <div class="content">
+                    Crea tu Deamon y conviertelo en tu acompañante de vida.
+                    Programale tareas, juega, pídele ayuda, enseñale, interactúa
+                    y agregale nuevas habilidades.
+                </div>
+                <div class="picture"></div>
+                <div style="clear:both;"></div>
+            </div>
+		</div>
+		<div class="line"></div>
+		<!--/slide-->
+
+		<!--slide-->
+		<div id="slide-devices" class="slide">
+			<div class="text">
+                <div class="title">ALWAYS PRESENT.</div>
+                <div class="content">
+                    Usalo en cualquier dispositivo móvil o PC.
+                </div>
+                <br><div class="picture"></div>
+                <div style="clear:both;"></div>
+            </div>
+		</div>
+		<div class="line"></div>
+		<!--/slide-->
+
+		<!--slide-->
+		<div id="slide-collaborate" class="slide">
+			<div class="text">
+                <div class="title">INSTALL, CREATE AND SHARE NEW SKILLS TO THE MARKET.</div>
+                <div class="content">Instala nuevas habilidades a tu Daemon desde el Market. 
+                    Además, puedes crear nuevas habilidades usando el lenguaje XML 
+                    y subirlas al Market para que otros usuarios también puedan usarlos. 
+                </div>
+                <div class="picture"></div>
+                <div style="clear:both;"></div>
+            </div>
+		</div>
+		<div class="line"></div>
+		<!--/slide-->
+
+		<!--slide-login-->
+		<div id="slide-login" class="slide">
+			<div class="container">
+				<div class="row center text content">
+					<div class="col-8">
+						Just enter your email and start enjoying your <b> free </b> personalized Daemon.
+					</div>
+				</div>
+				<div class="row top around">
+					<div class="col-5">
+						<ccmind-join></ccmind-join>
+					</div>
+					<div class="col-5">
+						<ccmind-login></ccmind-login>
+					</div>
+				</div>
+				<div class="row">
+					<div class="picture"></div>
+				</div>
+			</div>
+		</div>
+		<!--/slide-login-->
 	</section>
-	<footer></footer>
-	<script type="text/javascript" src="bundle.js"></script>
+	<footer class="footer">
+        <div id="logo"></div>
+	</footer>
+	<script type="text/javascript" src="./js/bundle.js"></script>
 </body>
 </html>

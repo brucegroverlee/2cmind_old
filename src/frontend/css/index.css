@@ -5,6 +5,167 @@ body {
     color: #333333 !important;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
+.slide{
+    width: 100%;
+    /*height: 300px;*/
+    color: #252525;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*border: black solid 1px;*/
+}
+
+.text {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 60px;
+    font-weight: 800;
+}
+
+.content {
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.picture{
+    /*margin-top: 100px;*/
+    /*border: black solid 1px;*/
+    margin: auto;
+}
+
+.line {
+    margin: auto;
+    width: 90%;
+    border-top: #eee solid 2px;
+}
+
+/******************************************************************************/
+
+#slide-home {
+    background-image: url("../img/background.png");
+    padding-top: 250px;
+    padding-bottom: 250px;
+}
+#slide-home .title {
+    /* border: black solid 1px; */
+    text-align: center;
+    font-size: 90px;
+    /* margin-top: 200px; */
+    color: #ffffff;
+    font-size: 70px;
+    font-weight: 600;
+}
+
+/******************************************************************************/
+
+#slide-about .title, #slide-about .content, #slide-about .picture{
+/*    width: 45%;
+    float: left;*/
+    text-align: center;
+}
+#slide-about .picture{
+    height: 400px;
+    width: 500px;
+    background-image: url("../img/daemon-2.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/******************************************************************************/
+
+#slide-devices .title, #slide-devices .content, #slide-devices .picture{
+    text-align: center;
+}
+
+#slide-devices .picture{
+    margin: auto;
+    /*margin-top: 50px;*/
+    width: 180px;
+    height: 350px;
+    background-image: url("../img/daemon-3.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/******************************************************************************/
+#slide-collaborate {
+    /*background-color: #337eff;
+    color: white;*/
+}
+
+#slide-collaborate .text {
+    width: 100%;
+}
+#slide-collaborate .title {
+    padding: 15px;
+    font-size: 50px;
+    background-color: #9954bb;
+    color: white;
+}
+#slide-collaborate .title, #slide-collaborate .contentt, #slide-collaborate .picture{
+    text-align: center;
+}
+
+#slide-collaborate .picture{
+    width: 400px;
+    height: 300px;
+    background-image: url("../img/daemon-4.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/******************************************************************************/
+
+#slide-login{
+    padding-bottom: 0px;
+}
+
+#slide-login .title, #slide-login .content{
+    text-align: center;
+}
+
+#slide-login .picture{
+    margin: auto;
+    /*margin-top: 50px;*/
+    width: 600px;
+    height: 150px;
+    background-image: url("../img/daemon-5.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    /*border: 1px solid #DBE1EB;*/
+}
+
+/******************************************************************************/
+
+.footer {
+    width: 100%;
+    /*height: 70px;*/
+    color: #cccccc;
+    background-color: #2780e3;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    /*padding: 10px;*/
+}
+.footer #logo{
+    /*margin-top: 20px;*/
+    margin-left: 20px;
+    background-image: url('../img/logo-white.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 20px;
+    /*border: 1px solid #ffffff;*/
+}
+
 /* unvisited link 
 a:link {
     color: #E8418F;

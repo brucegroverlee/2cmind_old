@@ -1,5 +1,6 @@
 (function () {
 	angular.module('ccmind',[
-		'ccmind.controllers'
+		'ccmind.controllers',
+		'ccmind.directives'
 	]);
 })();
