@@ -2,7 +2,7 @@
 	angular.module('ccmind.services', [])
 
 		.factory('ccmindJoinService', ['$http', '$q', function ($http, $q) {
-			var apiJoin = '/api/profile/join';
+			var apiJoin = '/api/session/join';
 			
 			function join (name, email, password) {
         var deferred = $q.defer();
@@ -17,10 +17,11 @@
         })
         .then(
           function (response) {
-          	//deferred.resolve({ error: response.data.error });
+          	console.log('Join successful: ' + response.data)
           	deferred.resolve( response.data );
           }, 
           function (response) {
+          	console.log('Join failed')
           	deferred.reject({error: 'error 500'});
           }
         )
@@ -34,7 +35,7 @@
 		}])
 
 		.factory('ccmindLoginService', ['$http', '$q', function ($http, $q) {
-			var apiLogin = '/api/profile/login';
+			var apiLogin = '/api/session/login';
 
 			function login (email, password) {
         var deferred = $q.defer();
@@ -42,17 +43,18 @@
           method: 'POST',
           url: apiLogin,
           data: {
-          	email: email,
+          	username: email,
           	password: password
           }
         })
         .then(
           function (response) {
-          	//deferred.resolve({ error: response.data.error });
+          	console.log('Login successful: ' + response.data)
           	deferred.resolve( response.data );
           }, 
           function (response) {
-          	deferred.reject({ error: 'error 500' });
+          	console.log('Login failed')
+          	deferred.reject( response );
           }
         )
         return deferred.promise;

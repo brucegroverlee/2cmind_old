@@ -94,7 +94,7 @@
 					var promise = ccmindJoinService.join($scope.name, $scope.email, $scope.password);
 					promise.then(
 						function (response) {
-							alert( response.error );
+							alert( response.message );
 						},
 						function (response) {
 							alert( response.error );
@@ -113,10 +113,10 @@
 				var promise = ccmindLoginService.login($scope.email, $scope.password);
 				promise.then(
 					function (response) {
-						alert( response.error );
+						alert( response.message );
 					},
 					function (response) {
-						alert( response.error );
+						alert( response.status );
 					}
 				);
 			}

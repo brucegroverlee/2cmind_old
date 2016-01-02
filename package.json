@@ -22,7 +22,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "mkdir-public": "mkdir public",
     "mkdir-dirs": "mkdir public/css && mkdir public/js && mkdir public/img && mkdir public/partials && mkdir public/css/fonts",
-    "copy-html": "cp src/frontend/index.html public/index.html && cp src/frontend/partials/*.* public/partials",
+    "copy-html": "cp src/frontend/*.html public && cp src/frontend/partials/*.* public/partials",
     "copy-img": "cp src/frontend/img/*.* public/img",
     "copy-fonts": "cp src/frontend/css/fonts/*.* public/css/fonts",
     "copy-css": "cp src/frontend/css/bootstrap.css src/frontend/scss/bootstrap.scss && cp src/frontend/css/flexbox.css src/frontend/scss/flexbox.scss && cp src/frontend/css/fonts.css src/frontend/scss/fonts.scss && cp src/frontend/css/index.css src/frontend/scss/index.scss",
@@ -37,8 +37,12 @@
     "babel-cli": "^6.3.17",
     "babel-preset-es2015": "^6.3.13",
     "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.0",
     "express": "^4.13.3",
-    "jquery": "^2.1.4"
+    "express-session": "^1.12.1",
+    "jquery": "^2.1.4",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "babelify": "^7.2.0",

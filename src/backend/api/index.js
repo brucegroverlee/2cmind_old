@@ -1,8 +1,8 @@
 import express from 'express'
-import profile from './profile'
+import session from './session'
 
 const router = express.Router()
 
-router.use('/profile', profile)
+router.use('/session', session)
 
 export default router

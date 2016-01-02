@@ -4,25 +4,25 @@
     <div class="form-group">
       <label for="inputName" class="col-lg-3 control-label">Name</label>
       <div class="col-lg-8">
-        <input type="text" class="form-control" id="inputName" placeholder="Name" value="" ng-model="name">
+        <input type="text" class="form-control" id="inputNameJoin" placeholder="Name" value="" ng-model="name">
       </div>
     </div>
     <div class="form-group">
       <label for="inputEmail" class="col-lg-3 control-label">Email</label>
       <div class="col-lg-8">
-        <input type="email" class="form-control" id="inputEmail" placeholder="Email" value="" ng-model="email">
+        <input type="email" class="form-control" id="inputEmailJoin" placeholder="Email" value="" ng-model="email">
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group {{equalpassword}}">
       <label for="inputPassword" class="col-lg-3 control-label">Password</label>
       <div class="col-lg-8">
-        <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="password">
+        <input type="password" class="form-control" id="inputPasswordJoin" placeholder="Password" ng-model="password" ng-keyup="equalPassword()">
       </div>
     </div>
     <div class="form-group {{equalpassword}}">
       <label for="inputPassword" class="col-lg-3 control-label">Re-Password</label>
       <div class="col-lg-8">
-        <input type="password" class="form-control" id="inputPassword" placeholder="Repeat your Password" ng-model="repassword" ng-keyup="equalPassword()">
+        <input type="password" class="form-control" id="inputRePasswordJoin" placeholder="Repeat your Password" ng-model="repassword" ng-keyup="equalPassword()">
       </div>
     </div>
     <div class="alert alert-dismissible alert-danger" ng-if="equalpassword === 'has-error'">
