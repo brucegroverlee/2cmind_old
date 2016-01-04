@@ -1,7 +1,7 @@
 (function () {
 	angular.module('ccmind.services', [])
 
-		.factory('ccmindJoinService', ['$http', '$q', function ($http, $q) {
+		.factory('ccmindJoinService', ['$http', '$q', '$window', function ($http, $q, $window) {
 			var apiJoin = '/api/session/join';
 			
 			function join (name, email, password) {
@@ -17,8 +17,10 @@
         })
         .then(
           function (response) {
-          	console.log('Join successful: ' + response.data)
+          	console.log('Join successful')
+          	console.log(response.data)
           	deferred.resolve( response.data );
+          	$window.location.href = '/d';
           }, 
           function (response) {
           	console.log('Join failed')
@@ -34,7 +36,7 @@
 
 		}])
 
-		.factory('ccmindLoginService', ['$http', '$q', function ($http, $q) {
+		.factory('ccmindLoginService', ['$http', '$q', '$window', function ($http, $q, $window) {
 			var apiLogin = '/api/session/login';
 
 			function login (email, password) {
@@ -43,14 +45,16 @@
           method: 'POST',
           url: apiLogin,
           data: {
-          	username: email,
+          	email: email,
           	password: password
           }
         })
         .then(
           function (response) {
-          	console.log('Login successful: ' + response.data)
+          	console.log('Login successful')
+          	console.log(response.data)
           	deferred.resolve( response.data );
+          	$window.location.href = '/d';
           }, 
           function (response) {
           	console.log('Login failed')
