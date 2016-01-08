@@ -4,11 +4,17 @@ import cookieParser from 'cookie-parser'
 import expressSession from 'express-session'
 import passport from 'passport'
 import mongoose from 'mongoose'
+import bCrypt from 'bcrypt-nodejs'
+import keyGen from 'keygenerator'
 
 const LocalStrategy = require('passport-local').Strategy
 // you need to set mergeParams: true on the router,
 // if you want to access params from the parent router
 const router = express.Router({mergeParams: true})
+
+keyGen._({
+  length: 20
+})
 
 mongoose.connect('mongodb://localhost/2cmind');
 
@@ -25,6 +31,26 @@ router.use(cookieParser())
 router.use(expressSession({ secret: '2cmind sessions', resave: false, saveUninitialized: true }))
 router.use(passport.initialize())
 router.use(passport.session())
+
+// Generates hash using bCrypt
+var createHash = function (password) {
+  return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+}
+
+var isValidPassword = function(user, password){
+  return bCrypt.compareSync(password, user.password);
+}
+
+passport.serializeUser(function (user, done) {
+  done(null, {
+    id: user._id,
+    key: user.key,
+    name: user.name,
+    email: user.email
+  })
+})
+
+passport.deserializeUser(({id, key, name, email}, done) => done(null, {id, key, name, email}))
 
 passport.use('join', new LocalStrategy({
     usernameField: 'email',
@@ -54,8 +80,8 @@ passport.use('join', new LocalStrategy({
           // set the user's local credentials
           newUser.name = request.body.name
           newUser.email = email
-          newUser.password = password
-          newUser.key = '666'
+          newUser.password = createHash(password)
+          newUser.key = keyGen._()
  
           // save the user
           newUser.save(function(err) {
@@ -101,8 +127,8 @@ passport.use(new LocalStrategy({
           return done(null, false, { message: 'User Not found.'})              
         }
         // User exists but wrong password, log the error 
-        //if (!isValidPassword(user, password)){
-        if ( 0 !== password.localeCompare(user.password) ){
+        if (!isValidPassword(user, password)){
+        //if ( 0 !== password.localeCompare(user.password) ){
           console.log('Invalid Password')
           return done(null, false, { message: 'Invalid Password' })
         }
@@ -114,9 +140,6 @@ passport.use(new LocalStrategy({
     )
   }
 ))
-
-passport.serializeUser((user, done) => done(null, user))
-passport.deserializeUser((user, done) => done(null, user))
 
 router.post('/join', passport.authenticate('join'), function (request, response) {
   let name = request.body.name
