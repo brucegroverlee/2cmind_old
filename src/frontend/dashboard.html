@@ -25,7 +25,7 @@
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default" ng-controller="dashboardNavBarController">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
 		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
@@ -39,7 +39,7 @@
 
 		    <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-1" aria-expanded="true">
 		      <ul class="nav navbar-nav">
-		        <li class="pointer"><a>profile</a></li>
+		        <li class="pointer"><a>profile ({{user.name}})</a></li>
 		        <li class="pointer"><a>market</a></li>
 		        <li class="pointer"><a>daemon</a></li>
 		      </ul>

@@ -12,9 +12,9 @@
 			$scope.topLogin = 0;
 
 			angular.element($window).bind("scroll", function() {
-          $scope.scrollTop = $window.pageYOffset;
-          $scope.$apply();
-      });
+		        $scope.scrollTop = $window.pageYOffset;
+		        $scope.$apply();
+		    });
 
 			$(window).resize(getSlidePosition);
 
@@ -26,9 +26,9 @@
 				$scope.topDevices = $('#slide-devices').position().top - 50;
 				$scope.topCollaborate = $('#slide-collaborate').position().top - 50;
 				$scope.topLogin = $('#slide-login').position().top - 50;
-        $scope.$apply();
+		        $scope.$apply();
 
-        $('#nav-home').click(function () {
+		        $('#nav-home').click(function () {
 					$('body,html').animate({
 						scrollTop: 0
 					}, time);
@@ -73,7 +73,7 @@
 			
 		}])
 
-		.controller('joinController', ['$scope', 'ccmindJoinService', function ($scope, ccmindJoinService) {
+		.controller('joinController', ['$scope', 'ccmindSessionService', function ($scope, ccmindSessionService) {
 			//$scope.attribute;
 			$scope.name = null;
 			$scope.email = null;
@@ -91,7 +91,7 @@
 			
 			$scope.join = function () {
 				if ($scope.equalpassword === 'has-success') {
-					var promise = ccmindJoinService.join($scope.name, $scope.email, $scope.password);
+					var promise = ccmindSessionService.join($scope.name, $scope.email, $scope.password);
 					promise.then(
 						function (response) {
 							//alert( response.message );
@@ -105,12 +105,12 @@
 
 		}])
 		
-		.controller('loginController', ['$scope', 'ccmindLoginService', function ($scope, ccmindLoginService) {
+		.controller('loginController', ['$scope', 'ccmindSessionService', function ($scope, ccmindSessionService) {
 			$scope.email = null;
 			$scope.password = null;
 
 			$scope.login = function () {
-				var promise = ccmindLoginService.login($scope.email, $scope.password);
+				var promise = ccmindSessionService.login($scope.email, $scope.password);
 				promise.then(
 					function (response) {
 						//alert( response.message );
@@ -121,5 +121,22 @@
 				);
 			}
 
+		}])
+
+		.controller('dashboardNavBarController', ['$scope', 'ccmindSessionService', function ($scope, ccmindSessionService) {
+			$scope.user = {
+				name: null
+			}
+
+			ccmindSessionService.user().then(function (data) {
+				$scope.user.name = data.user.name
+			})
+
+			/*$(window).ready(function () {
+				ccmindSessionService.user().then(function (data){
+					$scope.name = 'okis'
+					$scope.$apply()
+				})
+			})*/
 		}]);
 })();
